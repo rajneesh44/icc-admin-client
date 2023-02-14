@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+body {
+  background-color: #f8f9fa;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav {
+  border-bottom: 0.5px solid rgb(223, 217, 217);
+}
+.navbar-brand {
+  font-family: "Gentium Book Plus", serif;
+  font-size: larger;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#products-container {
+  margin: auto;
+  padding-top: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#product-card {
+  box-shadow: 0 20px 19px -19px rgba(138, 138, 138, 0.794);
+  border: 0.5px solid rgb(218, 217, 217);
+  border-radius: 10px;
+}
+
+.product-heading-parent {
+  position: relative;
+  margin-bottom: 50px;
+}
+.prodcuts-heading {
+  margin-bottom: 10px;
+  position: absolute;
+}
+
+.product-search {
+  position: absolute;
+  right: 0;
+  margin-bottom: 10px;
+}
+
+#add-product-button{
+  position: absolute;
+  right: 230px;
+  z-index: 1;
+}
+
+.hl {
+  width: 100%;
+  border-bottom: 1px solid rgb(179, 176, 176);
+  margin-bottom: 30px;
+}
+
+.card-top {
+  position: relative;
+}
+
+.ratings {
+  width: 25px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.rating-number {
+  position: absolute;
+  right: 35px;
+  top: 3px;
+  font-weight: bold;
+  font-size: large;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* .card-heading-rating{
+
+} */
+
+.checked {
+  color: orange;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
 }
