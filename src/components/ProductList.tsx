@@ -14,11 +14,8 @@ const ProductList = () => {
     axios.defaults.headers.post["Content-Type"] =
       "application/x-www-form-urlencoded";
     const response = await axios.get(`${BASE_URL}/products`);
-    console.log("======", response.data.data);
     const responseProducts: Product[] = response.data.data as Product[];
-    console.log("========================", responseProducts);
     setProducts(responseProducts);
-    console.log("--->", products);
     return response.data;
   };
 
@@ -32,8 +29,19 @@ const ProductList = () => {
         <div className="prodcuts-heading">
           <h2>All Products</h2>
         </div>
-        <button className="btn btn-success" type="submit" id="add-product-button">
+        <button
+          className="btn btn-success"
+          type="submit"
+          id="add-product-button"
+        >
           + Add Product
+        </button>
+        <button
+          className="btn btn-success"
+          type="submit"
+          id="add-product-button-2"
+        >
+          +
         </button>
         <div className="product-search">
           <input

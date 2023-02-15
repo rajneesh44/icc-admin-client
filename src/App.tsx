@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductList from "./components/ProductList";
+import Login from "./components/Login";
 // import * as dotenv from "dotenv";
 
 // dotenv.config();
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<Navbar />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/products" element={<ProductList />} />
             {/* <Route path="blogs" element={<BlogList />} />
             <Route path="/blogs/:blogId" element={<SingleBlog />} /> */}

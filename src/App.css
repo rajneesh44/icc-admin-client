@@ -6,9 +6,9 @@ nav {
   border-bottom: 0.5px solid rgb(223, 217, 217);
 }
 .navbar-brand {
-  font-family: "Gentium Book Plus", serif;
-  font-size: larger;
-  padding: 10px;
+  font-family: sans-serif;
+  font-size: x-large;
+  /* padding: 10px; */
 }
 
 #products-container {
@@ -37,10 +37,17 @@ nav {
   margin-bottom: 10px;
 }
 
-#add-product-button{
+#add-product-button {
   position: absolute;
   right: 230px;
   z-index: 1;
+}
+
+#add-product-button-2 {
+  position: absolute;
+  right: 230px;
+  z-index: 1;
+  display: none;
 }
 
 .hl {
@@ -53,37 +60,35 @@ nav {
   position: relative;
 }
 
+#description {
+  color: rgb(79, 78, 78);
+  font-size: small;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-title {
+  font-size: large;
+  font-weight: 800;
+  margin-top: -5px;
+}
+
 .ratings {
   width: 25px;
   position: absolute;
   right: 5px;
-  top: 5px;
+  top: 54%;
 }
-
-.rating-number {
-  position: absolute;
-  right: 35px;
-  top: 3px;
-  font-weight: bold;
-  font-size: large;
-  color: white;
-}
-
-
-/* .card-heading-rating{
-
-} */
-
-.checked {
-  color: orange;
-}
-
-
 
 .stars-outer {
+  right: 13px;
   display: inline-block;
-  position: relative;
+  position: absolute;
   font-family: FontAwesome;
+  color: rgb(158, 155, 155);
 }
 .stars-outer::before {
   content: "\f006 \f006 \f006 \f006 \f006";
@@ -99,4 +104,58 @@ nav {
 .stars-inner::before {
   content: "\f005 \f005 \f005 \f005 \f005";
   color: #f8ce0b;
+}
+.discount-span {
+  position: relative;
+}
+
+.dollar {
+  position: absolute;
+  width: 18px;
+  margin-left: -2px;
+}
+
+#discount {
+  margin-left: 18px;
+  font-size: small;
+  font-weight: 600;
+  color: grey;
+}
+#price {
+  font-size: large;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.product-quantity {
+  position: absolute;
+  font-size: small;
+  color: rgb(219, 54, 54);
+  right: 15px;
+  top: 85.5%;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+  .card {
+    margin: auto;
+  }
+
+  #add-product-button {
+    display: none;
+  }
+
+  #add-product-button-2 {
+    display: block;
+    right: 160px;
+    font-size: medium;
+  }
+
+  .product-search {
+    position: absolute;
+    right: 0;
+    margin-bottom: 10px;
+    width: 150px;
+  }
 }
