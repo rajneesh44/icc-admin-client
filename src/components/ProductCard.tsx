@@ -12,10 +12,6 @@ const ProductCard: React.FC<ProductsProps> = ({ product }) => {
 
   const starPercentage = (product.ratings / starTotal) * 100;
   const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
-  const element: any = document.querySelector(".stars-inner");
-  if (element) {
-    element.style.width = starPercentageRounded;
-  }
   return (
     <div className="card" id="product-card" style={{ width: "18rem" }}>
       <div className="card-top">
@@ -26,7 +22,10 @@ const ProductCard: React.FC<ProductsProps> = ({ product }) => {
           <p className="card-title">{product.name}</p>
           <div className="ratings">
             <div className="stars-outer">
-              <div className="stars-inner"></div>
+              <div
+                className="stars-inner"
+                style={{ width: `${starPercentageRounded}` }}
+              ></div>
             </div>
           </div>
         </div>

@@ -1,10 +1,13 @@
 import "../App.css";
+import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <img src={logo} alt="logo" className="nav-logo" />
+
+        <a className="navbar-brand" href="/">
           <strong>ICC Admin</strong>
         </a>
         <button
