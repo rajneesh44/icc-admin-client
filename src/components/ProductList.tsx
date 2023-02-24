@@ -53,10 +53,14 @@ const ProductList = () => {
         </div>
       </div>
       <div className="hl"></div>
-
-      {products.map((product: Product) => (
-        <ProductCard key={product.uuid} product={product} />
-      ))}
+      <div className="grid">
+        {products.map((product: Product) => (
+          <ProductCard key={product.uuid} product={product} />
+        ))}
+        {/* {products.map((product: Product) => (
+          <ProductCard key={product.uuid} product={product} />
+        ))} */}
+      </div>
     </div>
   );
 };

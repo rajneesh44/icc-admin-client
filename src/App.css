@@ -20,6 +20,9 @@ nav {
   box-shadow: 0 20px 19px -19px rgba(138, 138, 138, 0.794);
   border: 0.5px solid rgb(218, 217, 217);
   border-radius: 10px;
+  height: 376px;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 .product-heading-parent {
@@ -58,6 +61,10 @@ nav {
 
 .card-top {
   position: relative;
+}
+
+.card-img-top {
+  height: 190px;
 }
 
 #description {
@@ -106,25 +113,29 @@ nav {
   color: #f8ce0b;
 }
 .discount-span {
-  position: relative;
+  /* position: relative; */
 }
 
 .dollar {
   position: absolute;
   width: 18px;
   margin-left: -2px;
+  top: 80%;
 }
 
 #discount {
+  position: absolute;
   margin-left: 18px;
   font-size: small;
   font-weight: 600;
   color: grey;
+  top: 80%;
 }
 #price {
+  position: absolute;
   font-size: large;
   font-weight: 700;
-  margin-top: 5px;
+  top: 85.5%;
 }
 
 .product-quantity {
@@ -133,6 +144,14 @@ nav {
   color: rgb(219, 54, 54);
   right: 15px;
   top: 85.5%;
+}
+
+.grid {
+  display: -webkit-flex;
+  flex-direction: row;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 /* Media Queries */
