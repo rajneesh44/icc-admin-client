@@ -6,10 +6,22 @@ nav {
   border-bottom: 0.5px solid rgb(223, 217, 217);
 }
 
-.nav-logo{
+.nav-logo {
   width: 40px;
   margin-right: 10px;
   border-radius: 5px;
+}
+
+.nav-link.active {
+  background-color: rgb(240, 238, 238);
+  border-radius: 5px;
+}
+
+.logout {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  border: 2px solid #cecece;
+  padding: 5px;
 }
 
 .navbar-brand {
@@ -89,6 +101,12 @@ nav {
   font-size: large;
   font-weight: 800;
   margin-top: -5px;
+  max-width: 180px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ratings {
@@ -160,6 +178,12 @@ nav {
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
+}
+
+iframe {
+  border-radius: 5px;
+  margin: 10px;
+  border-bottom: 0.5px solid rgb(141, 139, 139);
 }
 
 /* Media Queries */

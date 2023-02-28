@@ -7,7 +7,6 @@ interface ProductsProps {
 }
 
 const ProductCard: React.FC<ProductsProps> = ({ product }) => {
-  console.log("Product: ", product.name, product.ratings);
   const starTotal = 5;
 
   const starPercentage = (product.ratings / starTotal) * 100;
