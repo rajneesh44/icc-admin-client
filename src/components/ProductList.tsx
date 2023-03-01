@@ -10,11 +10,15 @@ const BASE_URL = "https://icc-hack.ap-south-1.elasticbeanstalk.com";
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [searchedProducts, setsearchedProducts] = useState<Product[]>([]);
+  const [isSearchActive, setSearchActive] = useState<boolean>(false);
 
   const fetchProducts = async () => {
     console.log("====", BASE_URL);
     axios.defaults.headers.post["Content-Type"] = "application/json";
-    const response = await axios.get(`${BASE_URL}/products/admin`, {withCredentials: true});
+    const response = await axios.get(`${BASE_URL}/products/admin`, {
+      withCredentials: true,
+    });
     const responseProducts: Product[] = response.data.data as Product[];
     setProducts(responseProducts);
     return response.data;
@@ -23,6 +27,20 @@ const ProductList = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const handleSearchProducts = (event: any) => {
+    const searchedProducts = products.filter((product) =>
+      product.name
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase().trim())
+    );
+    setsearchedProducts(searchedProducts);
+    if (event.target.value.length > 1) {
+      setSearchActive(true);
+    } else {
+      setSearchActive(false);
+    }
+  };
 
   return (
     <div>
@@ -52,14 +70,22 @@ const ProductList = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              onKeyUpCapture={handleSearchProducts}
+              onKeyDown={handleSearchProducts}
             />
           </div>
         </div>
         <div className="hl"></div>
         <div className="grid">
-          {products.map((product: Product) => (
-            <ProductCard key={product.uuid} product={product} />
-          ))}
+          {isSearchActive
+            ? searchedProducts.length
+              ? searchedProducts.map((product) => (
+                  <ProductCard product={product} key={product.uuid} />
+                ))
+              : "No Results Found"
+            : products.map((product) => (
+                <ProductCard product={product} key={product.uuid} />
+              ))}
         </div>
       </div>
     </div>
