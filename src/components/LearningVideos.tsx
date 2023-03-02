@@ -1,16 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+import checkLogin from "../utils/check_login";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const LearningVideos = () => {
+  const navigate = useNavigate();
+
   const [videos, setVideos] = useState([]);
 
   const fetchTutorials = async () => {
-    const response = await axios.get(`${BASE_URL}/videos?type=tutorials`);
-    if (response.status === 200) {
-      setVideos(response.data.data);
+    if (await checkLogin()) {
+      const response = await axios.get(`${BASE_URL}/videos?type=tutorials`);
+      if (response.status === 200) {
+        setVideos(response.data.data);
+      }
+    } else {
+      navigate("/login");
     }
   };
 

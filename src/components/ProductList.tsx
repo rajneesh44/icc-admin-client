@@ -4,21 +4,30 @@ import "../App";
 import ProductCard from "./ProductCard";
 import Product from "../models/Product";
 import Navbar from "./Navbar";
+import checkLogin from "../utils/check_login";
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const ProductList = () => {
+  const navigate = useNavigate();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [searchedProducts, setsearchedProducts] = useState<Product[]>([]);
   const [isSearchActive, setSearchActive] = useState<boolean>(false);
+
   const fetchProducts = async () => {
-    axios.defaults.headers.post["Content-Type"] = "application/json";
-    const response = await axios.get(`${BASE_URL}/products/admin`, {
-      withCredentials: true,
-    });
-    const responseProducts: Product[] = response.data.data as Product[];
-    setProducts(responseProducts);
-    return response.data;
+    if (await checkLogin()) {
+      axios.defaults.headers.post["Content-Type"] = "application/json";
+      const response = await axios.get(`${BASE_URL}/products/admin`, {
+        withCredentials: true,
+      });
+      const responseProducts: Product[] = response.data.data as Product[];
+      setProducts(responseProducts);
+      return response.data;
+    } else {
+      navigate("/login");
+    }
   };
 
   useEffect(() => {

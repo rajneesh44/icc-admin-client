@@ -1,8 +1,14 @@
+import axios from "axios";
 import { useEffect } from "react";
 import "../App.css";
 import logo from "../assets/logo.jpg";
+import { useNavigate } from "react-router-dom";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const path = window.location.pathname.split("/")[1];
     const element = document.getElementById(`nav-${path}`);
@@ -10,6 +16,21 @@ const Navbar = () => {
       element.className = "nav-link active";
     }
   });
+
+  const handleLogout = async () => {
+    const response = await axios.post(
+      `${BASE_URL}/auth/admin/logout`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+    if (response.status === 200) {
+      console.log(response.data, response.headers);
+      navigate("/login");
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -52,9 +73,11 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-2 ">
             <li className="nav-item">
-              <button className="logout">Logout</button>
+              <button className="logout" onClick={handleLogout}>
+                Logout
+              </button>
             </li>
           </ul>
         </div>
