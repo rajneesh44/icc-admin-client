@@ -4,8 +4,7 @@ import logo from "../assets/logo.jpg";
 import axios from "axios";
 import "../login.css";
 
-// const BASE_URL = "http://127.0.0.1:8080";
-const BASE_URL = "https://icc-hack.ap-south-1.elasticbeanstalk.com";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Login = () => {
   const navigate = useNavigate();

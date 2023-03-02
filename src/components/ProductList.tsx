@@ -5,16 +5,13 @@ import ProductCard from "./ProductCard";
 import Product from "../models/Product";
 import Navbar from "./Navbar";
 
-// const BASE_URL = "http://127.0.0.1:8080";
-const BASE_URL = "https://icc-hack.ap-south-1.elasticbeanstalk.com";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchedProducts, setsearchedProducts] = useState<Product[]>([]);
   const [isSearchActive, setSearchActive] = useState<boolean>(false);
-
   const fetchProducts = async () => {
-    console.log("====", BASE_URL);
     axios.defaults.headers.post["Content-Type"] = "application/json";
     const response = await axios.get(`${BASE_URL}/products/admin`, {
       withCredentials: true,

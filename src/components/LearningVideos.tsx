@@ -1,27 +1,23 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
-const videos: object[] = [
-  {
-    title:
-      "Warne bowling to Ponting with Healy behind the stumps! | Wicket Keeping Masterclass | Part 2 🏏",
-    src: "https://www.youtube.com/embed/V2sg7vF8xa0",
-  },
-  {
-    title:
-      "Virat Kohli: The Complete Batsman | Batting masterclass with Kohli &amp; Nasser Hussain",
-    src: "https://www.youtube.com/embed/m8u-18Q0s7I",
-  },
-  {
-    title:
-      "What&#39;s it like to face a Murali spin delivery? | Muttiah Muralitharan Bowling Masterclass | Part 2",
-    src: "https://www.youtube.com/embed/_86wgCOFi-c",
-  },
-  {
-    title: "How the New Ball Swings | Wicket to Wicket | BYJU’S",
-    src: "https://www.youtube.com/embed/ylu7kdmakTA",
-  },
-];
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const LearningVideos = () => {
+  const [videos, setVideos] = useState([]);
+
+  const fetchTutorials = async () => {
+    const response = await axios.get(`${BASE_URL}/videos?type=tutorials`);
+    if (response.status === 200) {
+      setVideos(response.data.data);
+    }
+  };
+
+  useEffect(() => {
+    fetchTutorials();
+  }, []);
+
   return (
     <div>
       <Navbar />
